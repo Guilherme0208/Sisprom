@@ -96,7 +96,17 @@
                                  {{ produto.estoque }}
                               </span>
                            </td>
-                           <td>{{ produto.status_estoque }}</td>
+                           <td>
+                              {% if produto.status_estoque == 'Baixo' %}
+                              <span class="badge-danger">Baixo</span>
+
+                              {% elif produto.status_estoque == 'Atenção' %}
+                              <span class="badge-warning">Atenção</span>
+
+                              {% else %}
+                              <span class="badge-success">Normal</span>
+                              {% endif %}
+                           </td>
                            <td class="actions">
                               <a
                                  href="{% url 'produtos:produto_editar' produto.id %}"
